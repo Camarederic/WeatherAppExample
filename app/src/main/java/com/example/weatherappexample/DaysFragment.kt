@@ -11,7 +11,7 @@ import com.example.weatherappexample.adapters.WeatherAdapter
 import com.example.weatherappexample.databinding.FragmentDaysBinding
 
 
-class DaysFragment : Fragment() {
+class DaysFragment : Fragment(), WeatherAdapter.Listener {
 
     private lateinit var binding: FragmentDaysBinding
     private lateinit var adapter: WeatherAdapter
@@ -38,7 +38,7 @@ class DaysFragment : Fragment() {
 
     private fun initRecyclerView() = with(binding) {
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        adapter = WeatherAdapter()
+        adapter = WeatherAdapter(this@DaysFragment)
         recyclerView.adapter = adapter
     }
 
@@ -46,5 +46,9 @@ class DaysFragment : Fragment() {
 
         @JvmStatic
         fun newInstance() = DaysFragment()
+    }
+
+    override fun onClick(item: DayItem) {
+        model.liveDataCurrent.value = item
     }
 }

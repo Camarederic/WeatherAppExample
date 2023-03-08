@@ -45,7 +45,7 @@ class HoursFragment : Fragment() {
 
     private fun initRecyclerView() = with(binding) {
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        adapter = WeatherAdapter()
+        adapter = WeatherAdapter(null)
         recyclerView.adapter = adapter
 
     }
