@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherappexample.DayItem
 import com.example.weatherappexample.R
 import com.example.weatherappexample.databinding.ListItemBinding
+import com.squareup.picasso.Picasso
 
 class WeatherAdapter : ListAdapter<DayItem, WeatherAdapter.Holder>(Comparator()) {
 
@@ -18,6 +19,9 @@ class WeatherAdapter : ListAdapter<DayItem, WeatherAdapter.Holder>(Comparator())
             tvDate.text = item.time
             tvCondition.text = item.condition
             tvTemp.text = item.currentTemp
+            Picasso.get()
+                .load("https:" + item.imageUrl)
+                .into(image)
         }
     }
 
